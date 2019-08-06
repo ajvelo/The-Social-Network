@@ -40,13 +40,13 @@ export default function(state = initialState, action) {
     case DELETE_POST:
       return {
         ...state,
-        posts: state.posts.filter(post => post._id !== payload),
+        posts: state.posts.filter(post => post._id !== payload.id),
         loading: false
       };
     case ADD_POST:
       return {
         ...state,
-        posts: [...state.posts, payload],
+        posts: [payload, ...state.posts],
         loading: false
       };
     default:

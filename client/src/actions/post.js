@@ -86,7 +86,7 @@ export const addPost = formData => async dispatch => {
       type: ADD_POST,
       payload: res.data
     });
-    dispatch(setAlert("Post Removed", "success"));
+    dispatch(setAlert("Post Added", "success"));
   } catch (err) {
     dispatch({
       type: POST_ERROR,
