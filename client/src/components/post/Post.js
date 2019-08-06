@@ -3,12 +3,24 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import Spinner from "../layout/spinner";
 import { getPost } from "../../actions/post";
+import PostItem from "../posts/PostItem";
+import { Link } from "react-router-dom";
 
 const Post = ({ getPost, post: { post, loading }, match }) => {
   useEffect(() => {
     getPost(match.params.id);
   }, [getPost]);
-  return <div>Post</div>;
+
+  return loading || post === null ? (
+    <Spinner />
+  ) : (
+    <Fragment>
+      <Link to="/posts" className="btn">
+        Back To Posts
+      </Link>
+      <PostItem post={post} showActions={false} />
+    </Fragment>
+  );
 };
 
 Post.propTypes = {
