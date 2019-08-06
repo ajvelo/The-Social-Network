@@ -116,6 +116,7 @@ router.put("/like/:id", auth, async (req, res) => {
     }
     post.likes.unshift({ user: req.user.id });
     await post.save();
+    res.json(post.likes);
   } catch (error) {
     console.error(error.message);
     res.status(500).send("Sever Error");
@@ -143,6 +144,7 @@ router.put("/unlike/:id", auth, async (req, res) => {
       .indexOf(req.user.id);
     post.likes.splice(removeIndex, 1);
     await post.save();
+    res.json(post.likes);
   } catch (error) {
     console.error(error.message);
     res.status(500).send("Sever Error");
